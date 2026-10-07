@@ -1,0 +1,42 @@
+/*
+ * A plain layout for forms made in Current. Every rule is scoped to
+ * .current-form--styled, so <CurrentForm unstyled /> leaves the page alone.
+ * Set these variables on the site to match its look.
+ */
+.current-form--styled {
+  --cf-gap: 1rem;
+  --cf-font: inherit;
+  --cf-text: inherit;
+  --cf-muted: color-mix(in srgb, currentColor 65%, transparent);
+  --cf-border: color-mix(in srgb, currentColor 30%, transparent);
+  --cf-field-bg: transparent;
+  --cf-radius: 6px;
+  --cf-accent: currentColor;
+  --cf-button-bg: var(--cf-accent);
+  --cf-button-text: #fff;
+}
+
+.current-form--styled .cf-form { display: flex; flex-direction: column; gap: var(--cf-gap); font-family: var(--cf-font); color: var(--cf-text); }
+.current-form--styled .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--cf-gap); }
+@media (max-width: 40rem) { .current-form--styled .cf-row { grid-template-columns: 1fr; } }
+.current-form--styled .cf-field { display: flex; flex-direction: column; gap: 0.35rem; margin: 0; padding: 0; border: 0; min-width: 0; }
+.current-form--styled .cf-label { font-weight: 600; }
+.current-form--styled .cf-req { margin-left: 0.15em; color: var(--cf-muted); }
+.current-form--styled .cf-field input:not([type=radio]):not([type=checkbox]),
+.current-form--styled .cf-field select,
+.current-form--styled .cf-field textarea {
+  font: inherit; color: inherit; padding: 0.6rem 0.75rem; border: 1px solid var(--cf-border);
+  border-radius: var(--cf-radius); background: var(--cf-field-bg); width: 100%; box-sizing: border-box;
+}
+.current-form--styled .cf-choices { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
+.current-form--styled .cf-choice { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 400; }
+.current-form--styled .cf-consent { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.9em; color: var(--cf-muted); }
+.current-form--styled .cf-consent input { margin-top: 0.2em; }
+.current-form--styled .cf-submit {
+  align-self: flex-start; font: inherit; font-weight: 600; padding: 0.7rem 1.4rem; border: 0;
+  border-radius: var(--cf-radius); background: var(--cf-button-bg); color: var(--cf-button-text); cursor: pointer;
+}
+.current-form--styled .cf-field :focus-visible, .current-form--styled .cf-submit:focus-visible { outline: 2px solid var(--cf-accent); outline-offset: 2px; }
+
+/* The spam trap. Hidden from people whether or not the site styles anything. */
+.current-form .cf-hp { position: absolute !important; left: -10000px !important; width: 1px; height: 1px; overflow: hidden; }

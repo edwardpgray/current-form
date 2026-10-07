@@ -1,0 +1,19 @@
+{
+  "name": "current-form",
+  "version": "1.0.0",
+  "description": "Put a form made in Current on an Astro site.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "exports": {
+    ".": "./fetch-form.js",
+    "./CurrentForm.astro": "./CurrentForm.astro",
+    "./current-form.css": "./current-form.css"
+  },
+  "files": ["CurrentForm.astro", "fetch-form.js", "current-form.css", "README.md"],
+  "peerDependencies": {
+    "astro": ">=4"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}

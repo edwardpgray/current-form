@@ -1,0 +1,27 @@
+---
+/**
+ * <CurrentForm key="hdf_enquiry_AbCd" />
+ *
+ * Puts a form made in Current on the page. The HTML is fetched from Current
+ * when the site is BUILT, so a change in Current reaches the page at the next
+ * build — Current triggers one itself when a form changes, if the practice's
+ * Netlify build hook is set.
+ *
+ * Styling: ./current-form.css gives a plain layout using CSS variables
+ * (see README). Pass `unstyled` to leave every rule to the site.
+ */
+import { fetchForm } from './fetch-form.js';
+import './current-form.css';
+
+interface Props {
+  key?: string;
+  formKey?: string;
+  class?: string;
+  unstyled?: boolean;
+  base?: string;
+}
+
+const { key, formKey, class: className = '', unstyled = false, base } = Astro.props;
+const { html, version } = await fetchForm(formKey ?? key, base ? { base } : {});
+---
+<div class:list={['current-form', { 'current-form--styled': !unstyled }, className]} data-current-form-version={version} set:html={html} />
